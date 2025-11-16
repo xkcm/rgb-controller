@@ -33,7 +33,15 @@ export class KeyboardController extends AbstractController {
     }
 
     const device = await HID.HIDAsync.open(interfacePath)
-    return new KeyboardController(device, [255, 255, 255], 1);
+
+    // const statusBuffer = Array.from(await device.getFeatureReport(0x0, 520));
+    // console.debug(statusBuffer)
+    // const currentBrightness = statusBuffer[9] / 127 * 100;
+    // const currentRed = statusBuffer[12];
+    // const currentGreen = statusBuffer[13];
+    // const currentBlue = statusBuffer[14];
+
+    return new KeyboardController(device, [255, 255, 255], 100);
   }
 
   private currentColor: [number, number, number];
@@ -64,7 +72,7 @@ export class KeyboardController extends AbstractController {
   }
 
   public async turnOff(): Promise<void> {
-    const command = createApplyColorCommand(0, 0, 0, 0);
+    const command = createApplyColorCommand(...this.currentColor, 0);
 
     await this.report(0x0, command)
   }

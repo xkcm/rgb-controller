@@ -7,7 +7,7 @@ export default (red: number, green: number, blue: number, brightness: number) =>
     0,
     5,
     1,
-    127,
+    Math.round(127 * brightness / 100),
     255,
     131,
     red,
