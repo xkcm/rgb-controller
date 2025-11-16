@@ -1,0 +1,22 @@
+{
+  "name": "rgb-controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.1",
+  "dependencies": {
+    "commander": "^14.0.2",
+    "dotenv": "^17.2.3",
+    "node-hid": "^3.2.0",
+    "tuyapi": "^7.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1"
+  }
+}
