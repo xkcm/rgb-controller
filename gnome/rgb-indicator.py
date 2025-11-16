@@ -6,7 +6,8 @@ from gi.repository import AppIndicator3, Gtk
 
 APPINDICATOR_ID = 'rgb-indicator'
 
-LAMP_JS = str(Path(__file__).parent / ".." / "src" / "cli.ts")
+CLI_PATH = str(Path(__file__).parent / ".." / "src" / "cli.ts")
+ENV_PATH = str(Path(__file__).parent / ".." / ".env")
 
 class LampIndicator:
     def __init__(self):
@@ -39,7 +40,7 @@ class LampIndicator:
         self.indicator.set_menu(menu)
 
     def run_cli(self, *args):
-        cmd = ["bun", LAMP_JS, "--env-file", "../.env", *map(str, args)]
+        cmd = ["/home/xkcm/.bun/bin/bun", CLI_PATH, "--env-file", ENV_PATH, *map(str, args)]
         print("Running:", " ".join(cmd))
         subprocess.Popen(cmd)
 
